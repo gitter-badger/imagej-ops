@@ -31,6 +31,7 @@
 package net.imagej.ops;
 
 import net.imagej.ops.Ops.CreateImg;
+import net.imagej.ops.Ops.Chunker;
 
 import org.junit.Test;
 
@@ -46,6 +47,11 @@ public class GlobalNamespaceTest extends AbstractNamespaceTest {
 	@Test
 	public void testCreateImg() {
 		assertComplete(null, OpService.class, CreateImg.NAME);
+	}
+	
+	@Test
+	public void testChunker() {
+		assertComplete(null, OpService.class, Chunker.NAME);
 	}
 
 }
