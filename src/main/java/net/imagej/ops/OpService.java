@@ -34,6 +34,7 @@ import java.util.Collection;
 
 import net.imagej.ImageJService;
 import net.imagej.ImgPlus;
+import net.imagej.ops.chunker.Chunk;
 import net.imagej.ops.logic.LogicNamespace;
 import net.imagej.ops.math.MathNamespace;
 import net.imagej.ops.threshold.ThresholdNamespace;
@@ -175,6 +176,12 @@ public interface OpService extends PTService<Op>, ImageJService {
 	/** Executes the "chunker" operation on the given arguments. */
 	@OpMethod(op = Ops.Chunker.class)
 	Object chunker(Object... args);
+	
+	@OpMethod(op = net.imagej.ops.chunker.DefaultChunker.class)
+	void chunker(Chunk chunkable, long numberOfElements);
+
+	@OpMethod(op = net.imagej.ops.chunker.InterleavedChunker.class)
+	void interleavedChunker(Chunk chunkable, long numberOfElements);
 
 	/** Executes the "convert" operation on the given arguments. */
 	@OpMethod(op = Ops.Convert.class)

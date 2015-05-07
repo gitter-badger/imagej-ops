@@ -37,6 +37,9 @@ import java.util.HashSet;
 import java.util.List;
 
 import net.imagej.ImgPlus;
+import net.imagej.ops.chunker.Chunk;
+import net.imagej.ops.chunker.DefaultChunker;
+import net.imagej.ops.chunker.InterleavedChunker;
 import net.imagej.ops.create.CreateEmptyImgCopy;
 import net.imagej.ops.create.CreateEmptyImgPlusCopy;
 import net.imagej.ops.create.CreateImgDifferentNativeType;
@@ -177,6 +180,20 @@ public class DefaultOpService extends AbstractPTService<Op> implements
 	}
 
 	@Override
+	@OpMethod(op = net.imagej.ops.chunker.DefaultChunker.class)
+	public void chunker(final Chunk chunkable, final long numberOfElements) {
+		run(DefaultChunker.class, chunkable, numberOfElements);
+	}
+
+	@Override
+	@OpMethod(op = net.imagej.ops.chunker.InterleavedChunker.class)
+	public void interleavedChunker(final Chunk chunkable,
+		final long numberOfElements)
+	{
+		run(InterleavedChunker.class, chunkable, numberOfElements);
+	}
+
+	@Override
 	public Object convert(final Object... args) {
 		return run(Ops.Convert.NAME, args);
 	}
@@ -187,7 +204,7 @@ public class DefaultOpService extends AbstractPTService<Op> implements
 	}
 
 	@Override
-	public Object correlate(Object... args) {
+	public Object correlate(final Object... args) {
 		return run(Ops.Correlate.NAME, args);
 	}
 
@@ -284,7 +301,7 @@ public class DefaultOpService extends AbstractPTService<Op> implements
 	}
 
 	@Override
-	public Object fftsize(Object... args) {
+	public Object fftsize(final Object... args) {
 		return run(Ops.FFTSize.NAME, args);
 	}
 
@@ -329,7 +346,7 @@ public class DefaultOpService extends AbstractPTService<Op> implements
 	}
 
 	@Override
-	public Object log(Object... args) {
+	public Object log(final Object... args) {
 		return run(Ops.Log.NAME, args);
 	}
 
