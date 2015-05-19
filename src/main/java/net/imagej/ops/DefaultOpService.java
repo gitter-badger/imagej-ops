@@ -428,6 +428,11 @@ public class DefaultOpService extends AbstractPTService<Op> implements
 		return run(Ops.Variance.NAME, args);
 	}
 
+	@Override
+	public Object copy(final Object... args) {
+		return run(Ops.Copy.NAME, args);
+	}
+	
 	// -- Operation shortcuts - other namespaces --
 
 	@Override

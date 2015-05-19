@@ -358,6 +358,10 @@ public interface OpService extends PTService<Op>, ImageJService {
 	@OpMethod(op = Ops.Variance.class)
 	Object variance(Object... args);
 
+	/** Executes the "variance" operation on the given arguments. */
+	@OpMethod(op = Ops.Copy.class)
+	Object copy(Object... args);
+	
 	// -- Operation shortcuts - other namespaces --
 
 	/** Gateway into ops of the "logic" namespace. */
